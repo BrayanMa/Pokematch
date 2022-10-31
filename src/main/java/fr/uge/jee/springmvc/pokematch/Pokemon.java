@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 public class Pokemon {
-    @JsonIgnore
+    @JsonProperty("id")
     private long uid;
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("sprites")
-    private Sprites sprites;
+    //@JsonProperty("sprites")
+    //private Sprites sprites;
 
 
     public Pokemon() {}
 
-    @JsonProperty("sprites")
-    public Sprites getSprites() {
-        return sprites;
-    }
+    //@JsonProperty("sprites")
+    //public Sprites getSprites() {
+    //    return sprites;
+    //}
 
-    public void setSprites(Sprites sprites) {
-        this.sprites = sprites;
-    }
+    //public void setSprites(Sprites sprites) {
+    //    this.sprites = sprites;
+    //}
 
-    @JsonIgnore
+    @JsonProperty("id")
     public long getUid() {
         return uid;
     }
@@ -49,7 +49,7 @@ public class Pokemon {
         return "Pokemon{" +
                 "uid=" + uid +
                 ", name='" + name + '\'' +
-                ", url image =" + sprites.getUrl() +
+        //", url image =" + sprites.getUrl() +
                 '}';
     }
 
@@ -62,11 +62,11 @@ public class Pokemon {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pokemon pokemon = (Pokemon) o;
-        return uid == pokemon.uid && Objects.equals(name, pokemon.name) && Objects.equals(sprites, pokemon.sprites);
+        return uid == pokemon.uid && Objects.equals(name, pokemon.name) /*&& Objects.equals(sprites, pokemon.sprites)*/;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uid, name, sprites);
+        return Objects.hash(uid, name/*, sprites*/);
     }
 }

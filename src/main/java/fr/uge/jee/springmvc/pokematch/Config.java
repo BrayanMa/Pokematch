@@ -28,7 +28,8 @@ public class Config {
         //WebClient webClient = WebClient.create();
         WebClient webClient = (WebClient) applicationContext.getBean("getWebClient");
         return webClient.get()
-                .uri("https://pokeapi.co/api/v2/pokemon-form/"+id)
+                //.uri("https://pokeapi.co/api/v2/pokemon-form/"+id)
+                .uri("https://pokeapi.co/api/v2/pokemon/"+id)
                 .retrieve()
                 .bodyToMono(Pokemon.class);
     }
@@ -62,7 +63,7 @@ public class Config {
     }
 
     @Bean
-    Map<Pokemon, Sprites> createCacheField(){
+    Map<Pokemon, PokemonForm> createCacheField(){
         return new HashMap<>();
     }
 
