@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<hmtl lang="en" xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <title>Pokedex</title>
+    </head>
+
+    <body style="font-family: 'Roboto Light',sans-serif">
+
+    <form th:action="@{/pokemon}" th:object="${user}" method="post">
+        <h2>User information</h2>
+        <table>
+            <tr>
+                <td>
+                    <label for="fn">First Name:</label>
+                    <input id="fn" type="text" th:field="*{firstName}">
+                </td>
+                <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Height Error</td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="ln">Last Name:</label>
+                    <input type="text" id="ln" th:field="*{lastName}">
+                </td>
+                <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Height Error</td>
+            </tr>
+            <tr>
+                <button type="submit">Compute</button>
+            </tr>
+        </table>
+    </form>
+
+
+      <!--  <div><label for="fn">First Name:</label>
+            <input id="fn" type="text" name="firstName"></div>
+
+        <div><label for="ln">Last Name:</label>
+            <input type="text" id="ln" name="lastName"></div>
+
+        <div><button type="submit">Compute</button></div>
+    </form> !-->
+    <h2>List pokemon</h2>
+
+    <ul>
+        <li th:each="item : ${result.getResult()}">
+            <div th:text="${item.getPokemon().getName()} + ' ' + ${item.getOcc()} "></div>
+        </li>
+    </ul>
+
+    </body>
+
+</hmtl>
