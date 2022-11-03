@@ -54,15 +54,6 @@ public class Result {
         }
     }
 
-    /*public Map<Pokemon, Integer> getResult(){
-        return result.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .limit(10)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
-    }*/
-
     public List<RankedPokemon> getResult(){
         return rank;
     }

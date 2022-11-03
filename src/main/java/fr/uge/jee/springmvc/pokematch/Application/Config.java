@@ -1,16 +1,12 @@
 package fr.uge.jee.springmvc.pokematch.Application;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -24,22 +20,9 @@ public class Config {
                         .maxInMemorySize(16 * 1024 * 1024)).build()).build();
     }
 
-    Mono<Pokemon> getPokemon(int id, ApplicationContext applicationContext){
-        //WebClient webClient = WebClient.create();
-        WebClient webClient = (WebClient) applicationContext.getBean("getWebClient");
-        return webClient.get()
-                //.uri("https://pokeapi.co/api/v2/pokemon-form/"+id)
-                .uri("https://pokeapi.co/api/v2/pokemon/"+id)
-                .retrieve()
-                .bodyToMono(Pokemon.class);
-    }
-
     @Bean
-    List<Pokemon> pokemonListField(ApplicationContext applicationContext){
-        List<Mono<Pokemon>> monos = Flux.range(1, 	40).map(x -> this.getPokemon(x, applicationContext)).collect(Collectors.toList()).block();
-        Flux<Pokemon> flux = Flux.merge(Objects.requireNonNull(monos));
-        return flux.toStream().collect(Collectors.toList());
-        //students.forEach(x -> System.out.println(x.toString()));
+    List<Pokemon> pokemonListField(RequestGraphQL myClass){
+        return myClass.requestAllPoke();
     }
 
 

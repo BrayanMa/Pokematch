@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 public class PokemonController implements WebMvcConfigurer {
     private final PokemonList pokemonList;
     private final Result result;
-    private final MyClass myClass;
+    private final RequestGraphQL myClass;
     private final Cache cache;
 
-    public PokemonController(PokemonList pokemonList, Result result, Cache cache, MyClass myClass) {
+    public PokemonController(PokemonList pokemonList, Result result, Cache cache, RequestGraphQL myClass) {
         this.pokemonList = pokemonList;
         this.result = result;
         this.cache = cache;
@@ -35,7 +35,7 @@ public class PokemonController implements WebMvcConfigurer {
     public String getPokemon(Model model) {
         model.addAttribute("pokeList", pokemonList.getPokemonListField());
         model.addAttribute("result", result);
-        model.addAttribute("test", myClass.test2(2));
+        model.addAttribute("test", myClass.requestSprites(2));
         if(!model.containsAttribute("user"))
             model.addAttribute("user", new User());
         return "pokeForm";

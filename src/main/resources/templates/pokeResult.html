@@ -6,8 +6,8 @@
 </head>
 <body style="font-family: 'Roboto Light',sans-serif">
 <p th:text="'Hello  ' + ${first_name} + ' ' + ${last_name}"></p>
-<img th:src="@{${pokemonForm.getSprites().getUrl().toString()}}">
-<div th:text="${pokemon.getName().toString()}"></div>
+<img th:src="@{${pokemonForm.getSprites()}}">
+<div th:text="${pokemon.getName()}"></div>
 
 </body>
 </html>
