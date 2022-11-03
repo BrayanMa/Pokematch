@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Controller
 public class PokemonController implements WebMvcConfigurer {
+
     private final PokemonList pokemonList;
     private final Result result;
     private final RequestGraphQL myClass;
@@ -46,7 +47,6 @@ public class PokemonController implements WebMvcConfigurer {
         if (bindingResult.hasErrors()){
             return "pokeForm";
         }
-
         Map<Integer, Pokemon> pokemonMap = pokemonList.getPokemonListField().stream().collect(Collectors.toMap(Pokemon::hashName, x -> x));
         var optionalHashcode = pokemonMap.keySet().stream().min(Comparator.comparingInt(f -> Math.abs(f - user.hashCode())));
         if(optionalHashcode.isPresent()){
@@ -55,7 +55,7 @@ public class PokemonController implements WebMvcConfigurer {
             model.addAttribute("pokemonForm", cache.get(pokemon));
             result.add(pokemon);
         }else {
-            model.addAttribute("pokemon", "Pokemon not found");
+            throw new IllegalStateException();
         }
         model.addAttribute("first_name", user.getFirstName());
         model.addAttribute("last_name", user.getLastName());

@@ -12,39 +12,32 @@ import java.util.Objects;
 
 @Component
 public class RequestGraphQL {
+
     public List<Pokemon> requestAllPoke(){
         ObjectMapper objectMapper = new ObjectMapper();
-
         WebClient webClient = WebClient.builder()
                 .baseUrl("https://beta.pokeapi.co/graphql/v1beta")//url of graphql instance
                 .build();
-
         GraphQLWebClient graphqlClient = GraphQLWebClient.newInstance(webClient, objectMapper);
-
-        var response = graphqlClient.post(GraphQLRequest.builder().resource("query1.graphql").build())
+        var response = graphqlClient
+                .post(GraphQLRequest.builder().resource("graphql/query1.graphql").build())
                 .block();
-
         return Objects.requireNonNull(response).getFirstList(Pokemon.class);
     }
 
     public PokemonForm requestSprites(long id){
         ObjectMapper objectMapper = new ObjectMapper();
-
         WebClient webClient = WebClient.builder()
                 .baseUrl("https://beta.pokeapi.co/graphql/v1beta")//url of graphql instance
                 .build();
-
         GraphQLWebClient graphqlClient = GraphQLWebClient.newInstance(webClient, objectMapper);
-
-        var response = graphqlClient.post(GraphQLRequest.builder().resource("query2.graphql")
+        var response = graphqlClient.post(GraphQLRequest.builder().resource("graphql/query2.graphql")
                         .variables(Map.of("varid", id)).build())
                 .block();
-
         List<PokemonForm> entityList = Objects.requireNonNull(response).getFirstList(PokemonForm.class);
-
         var test = entityList.get(0).getSprites().split(":", 2)[1].split(",")[0].replaceAll("\"","");
         entityList.get(0).setSprites(test);
-
         return entityList.stream().findFirst().get();
     }
+
 }

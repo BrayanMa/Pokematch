@@ -25,25 +25,4 @@ public class PokemonForm {
         this.sprites = sprites;
     }
 
-   /* @JsonProperty("id")
-    private long uid;
-
-    @JsonProperty("sprites")
-    private Sprites sprites;
-
-    @JsonProperty("id")
-    public long getUid() {
-        return uid;
-    }
-
-    @JsonProperty("sprites")
-    public Sprites getSprites() {
-        return sprites;
-    }
-
-    public void setSprites(Sprites sprites) {
-        this.sprites = sprites;
-    }
-
-    public PokemonForm() {}*/
 }

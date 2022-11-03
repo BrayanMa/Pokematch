@@ -11,12 +11,11 @@ public class PokemonList {
     @Autowired
     private List<Pokemon> pokemonListField;
 
-
     public List<Pokemon> getPokemonListField() {
         return pokemonListField;
     }
 
-
     public PokemonList(){
     }
+
 }

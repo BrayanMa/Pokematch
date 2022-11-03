@@ -25,7 +25,6 @@ public class Config {
         return myClass.requestAllPoke();
     }
 
-
     @Bean
     PokemonList pokemonListOb(){
         return new PokemonList();

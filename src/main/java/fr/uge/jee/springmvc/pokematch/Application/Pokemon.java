@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 public class Pokemon {
+
     @JsonProperty("id")
     private long id;
     @JsonProperty("name")

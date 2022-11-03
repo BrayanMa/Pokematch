@@ -1,7 +1,9 @@
 package fr.uge.jee.springmvc.pokematch.Application;
 
 public class RankedPokemon {
+
     private final Pokemon pokemon;
+
     private final int occ;
 
     public RankedPokemon(Pokemon pokemon, int occ){
@@ -16,4 +18,5 @@ public class RankedPokemon {
     public int getOcc(){
         return occ;
     }
+
 }
