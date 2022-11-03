@@ -1,7 +1,6 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.Application;
 
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,13 +16,14 @@ import java.util.stream.Collectors;
 public class PokemonController implements WebMvcConfigurer {
     private final PokemonList pokemonList;
     private final Result result;
-
+    private final MyClass myClass;
     private final Cache cache;
 
-    public PokemonController(PokemonList pokemonList, Result result, Cache cache) {
+    public PokemonController(PokemonList pokemonList, Result result, Cache cache, MyClass myClass) {
         this.pokemonList = pokemonList;
         this.result = result;
         this.cache = cache;
+        this.myClass = myClass;
     }
 
     @Override
@@ -35,6 +35,7 @@ public class PokemonController implements WebMvcConfigurer {
     public String getPokemon(Model model) {
         model.addAttribute("pokeList", pokemonList.getPokemonListField());
         model.addAttribute("result", result);
+        model.addAttribute("test", myClass.test2(2));
         if(!model.containsAttribute("user"))
             model.addAttribute("user", new User());
         return "pokeForm";

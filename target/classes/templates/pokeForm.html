@@ -6,6 +6,8 @@
 
     <body style="font-family: 'Roboto Light',sans-serif">
 
+
+
     <form th:action="@{/pokemon}" th:object="${user}" method="post">
         <h2>User information</h2>
         <table>
@@ -39,6 +41,13 @@
         <div><button type="submit">Compute</button></div>
     </form> !-->
     <h2>List pokemon</h2>
+
+    <p th:text="${test.getSprites()}"></p>
+    <!--<ul>
+        <li th:each="item : ${test}">
+            <div th:text="${item.getId()} + ' ' + ${item.getName()} "></div>
+        </li>
+    </ul>!-->
 
     <ul>
         <li th:each="item : ${result.getResult()}">

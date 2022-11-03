@@ -1,6 +1,4 @@
-package fr.uge.jee.springmvc.pokematch;
-
-import javax.sound.sampled.Port;
+package fr.uge.jee.springmvc.pokematch.Application;
 
 public class RankedPokemon {
     private final Pokemon pokemon;

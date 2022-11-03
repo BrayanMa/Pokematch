@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.Application;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Configuration
-@PropertySource("classpath:result.properties")
+@PropertySource("classpath:application.properties")
 public class Config {
 
     @Bean
@@ -24,7 +24,7 @@ public class Config {
                         .maxInMemorySize(16 * 1024 * 1024)).build()).build();
     }
 
-    Mono<Pokemon> getStudent(int id, ApplicationContext applicationContext){
+    Mono<Pokemon> getPokemon(int id, ApplicationContext applicationContext){
         //WebClient webClient = WebClient.create();
         WebClient webClient = (WebClient) applicationContext.getBean("getWebClient");
         return webClient.get()
@@ -36,11 +36,12 @@ public class Config {
 
     @Bean
     List<Pokemon> pokemonListField(ApplicationContext applicationContext){
-        List<Mono<Pokemon>> monos = Flux.range(1, 	40).map(x -> this.getStudent(x, applicationContext)).collect(Collectors.toList()).block();
+        List<Mono<Pokemon>> monos = Flux.range(1, 	40).map(x -> this.getPokemon(x, applicationContext)).collect(Collectors.toList()).block();
         Flux<Pokemon> flux = Flux.merge(Objects.requireNonNull(monos));
         return flux.toStream().collect(Collectors.toList());
         //students.forEach(x -> System.out.println(x.toString()));
     }
+
 
     @Bean
     PokemonList pokemonListOb(){

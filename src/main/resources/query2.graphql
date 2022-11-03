@@ -1,0 +1,6 @@
+query GetPic ($varid: Int!){
+    pokemon_v2_pokemonformsprites(where: {id: {_eq: $varid}}) {
+        id
+        sprites
+    }
+}
