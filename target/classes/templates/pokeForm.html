@@ -40,19 +40,21 @@
 
         <div><button type="submit">Compute</button></div>
     </form> !-->
-    <h2>List of pokemon already found</h2>
+    <h2>List of Pokémon already found</h2>
 
     <!--<ul>
         <li th:each="item : ${test}">
             <div th:text="${item.getId()} + ' ' + ${item.getName()} "></div>
         </li>
     </ul>!-->
+    <div th:if=" ${result != null}">
+        <ul>
+            <li th:each="item : ${result.getResult()}">
+                <div th:text="${item.getPokemon().getName()} + ' ' + ${item.getOcc()} "></div>
+            </li>
+        </ul>
+    </div>
 
-    <ul>
-        <li th:each="item : ${result.getResult()}">
-            <div th:text="${item.getPokemon().getName()} + ' ' + ${item.getOcc()} "></div>
-        </li>
-    </ul>
 
     </body>
 

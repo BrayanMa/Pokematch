@@ -1,12 +1,18 @@
 package fr.uge.jee.springmvc.pokematch.Application;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
+import java.util.logging.Logger;
 
 @Component
 public class Cache {
@@ -14,24 +20,33 @@ public class Cache {
     @Autowired
     private RequestGraphQL requestGraphQL;
     @Autowired
-    private Map<Pokemon, PokemonForm> cache = new HashMap<>();
-   @Autowired
-   private ApplicationContext applicationContext;
+    private Map<Pokemon, byte[]> cache = new HashMap<>();
 
-    public PokemonForm get(Pokemon pokemon){
+    private static byte[] getImageFromUrl(String sprite) throws IOException {
+        URL url = new URL(sprite);
+        BufferedImage bImage = ImageIO.read(url);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        String format = sprite.substring(sprite.lastIndexOf(".") + 1);
+        ImageIO.write(bImage, format, bos);
+        return bos.toByteArray();
+    }
+
+    private PokemonForm requestToAPI(Pokemon pokemon){
+        return requestGraphQL.requestSprites(pokemon.getId());
+    }
+
+    public byte[] get(Pokemon pokemon) throws IOException {
         Objects.requireNonNull(pokemon);
         var pokemonForm = cache.get(pokemon);
         if(Objects.isNull(pokemonForm)){
-            PokemonForm requestPokeForm = requestToAPI(pokemon, applicationContext);
-            cache.put(pokemon, requestPokeForm);
-            return requestPokeForm;
+            PokemonForm requestPokeForm = requestToAPI(pokemon);
+            var image = getImageFromUrl(requestPokeForm.getSprites());
+            cache.put(pokemon, image);
+            return image;
         }
         return pokemonForm;
     }
 
-    private PokemonForm requestToAPI(Pokemon pokemon, ApplicationContext applicationContext){
-        return requestGraphQL.requestSprites(pokemon.getId());
-    }
 
 
 }

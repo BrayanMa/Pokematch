@@ -36,10 +36,10 @@ public class Result {
                 return;
             }
 
-            var rankedPokemons = rank.stream().map(RankedPokemon::getPokemon).collect(Collectors.toList());
+            var rankedPokemon = rank.stream().map(RankedPokemon::getPokemon).collect(Collectors.toList());
 
-            if(rankedPokemons.contains(pokemon)) {
-                rank.set(rankedPokemons.indexOf(pokemon), new RankedPokemon(pokemon, value));
+            if(rankedPokemon.contains(pokemon)) {
+                rank.set(rankedPokemon.indexOf(pokemon), new RankedPokemon(pokemon, value));
                 sortingRank();
             } else {
                 if(maxIndex < maxSize - 1){

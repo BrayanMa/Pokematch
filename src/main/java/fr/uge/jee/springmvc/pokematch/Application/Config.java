@@ -46,7 +46,7 @@ public class Config {
     }
 
     @Bean
-    Map<Pokemon, PokemonForm> createCacheField(){
+    Map<Pokemon, byte[]> createCacheField(){
         return new HashMap<>();
     }
 

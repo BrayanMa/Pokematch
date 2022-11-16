@@ -5,9 +5,14 @@
     <title>Pokedex</title>
 </head>
 <body style="font-family: 'Roboto Light',sans-serif">
-<p th:text="${first_name} + ' ' + ${last_name} + ' your favorite pokemon is :'" ></p>
-<img th:src="@{${pokemonForm.getSprites()}}">
+<p th:text="${user.firstName} + ' ' + ${user.lastName} + ' your favorite pokemon is :'" ></p>
+<!--<img th:src="@{${pokemonForm.getSprites()}}" alt=""> !-->
+<img th:src="${'data:image/png;charset=utf-8;base64,' + pokemonForm}">
 <div th:text="${pokemon.getName()}"></div>
 
+<p th:text="'To do another search'" ></p>
+<form th:action="@{/pokemon}" method="get">
+    <button type="submit">Back</button>
+</form>
 </body>
 </html>

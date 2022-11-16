@@ -31,8 +31,10 @@ public class RequestGraphQL {
                 .baseUrl("https://beta.pokeapi.co/graphql/v1beta")//url of graphql instance
                 .build();
         GraphQLWebClient graphqlClient = GraphQLWebClient.newInstance(webClient, objectMapper);
-        var response = graphqlClient.post(GraphQLRequest.builder().resource("graphql/query2.graphql")
-                        .variables(Map.of("varid", id)).build())
+        var response = graphqlClient.post(GraphQLRequest.builder()
+                        .resource("graphql/query2.graphql")
+                        .variables(Map.of("varid", id))
+                        .build())
                 .block();
         List<PokemonForm> entityList = Objects.requireNonNull(response).getFirstList(PokemonForm.class);
         var test = entityList.get(0).getSprites().split(":", 2)[1].split(",")[0].replaceAll("\"","");
