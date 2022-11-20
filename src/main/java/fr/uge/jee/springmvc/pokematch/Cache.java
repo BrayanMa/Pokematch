@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch.Application;
+package fr.uge.jee.springmvc.pokematch;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
-import java.util.logging.Logger;
 
 @Component
 public class Cache {
@@ -46,7 +43,4 @@ public class Cache {
         }
         return pokemonForm;
     }
-
-
-
 }

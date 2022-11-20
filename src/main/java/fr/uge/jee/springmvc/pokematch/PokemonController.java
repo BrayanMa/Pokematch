@@ -1,7 +1,5 @@
-package fr.uge.jee.springmvc.pokematch.Application;
+package fr.uge.jee.springmvc.pokematch;
 
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

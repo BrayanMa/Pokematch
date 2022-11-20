@@ -6,7 +6,6 @@
 </head>
 <body style="font-family: 'Roboto Light',sans-serif">
 <p th:text="${user.firstName} + ' ' + ${user.lastName} + ' your favorite pokemon is :'" ></p>
-<!--<img th:src="@{${pokemonForm.getSprites()}}" alt=""> !-->
 <img th:src="${'data:image/png;charset=utf-8;base64,' + pokemonForm}">
 <div th:text="${pokemon.getName()}"></div>
 

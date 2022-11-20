@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch.Application;
+package fr.uge.jee.springmvc.pokematch;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.kickstart.spring.webclient.boot.GraphQLRequest;
@@ -13,6 +13,7 @@ import java.util.Objects;
 @Component
 public class RequestGraphQL {
 
+    /* Code repris du lien présent dans le rapport */
     public List<Pokemon> requestAllPoke(){
         ObjectMapper objectMapper = new ObjectMapper();
         WebClient webClient = WebClient.builder()

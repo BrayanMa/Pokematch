@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch.Application;
+package fr.uge.jee.springmvc.pokematch;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

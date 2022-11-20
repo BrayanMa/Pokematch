@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch.Application;
+package fr.uge.jee.springmvc.pokematch;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

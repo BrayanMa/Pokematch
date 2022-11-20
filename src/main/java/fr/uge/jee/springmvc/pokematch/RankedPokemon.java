@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch.Application;
+package fr.uge.jee.springmvc.pokematch;
 
 public class RankedPokemon {
 
