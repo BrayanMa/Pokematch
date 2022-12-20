@@ -1,4 +1,4 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.User;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 

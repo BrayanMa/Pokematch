@@ -1,5 +1,7 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.Pokemons;
 
+import fr.uge.jee.springmvc.pokematch.Pokemons.Pokemon;
+import fr.uge.jee.springmvc.pokematch.Pokemons.RankedPokemon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

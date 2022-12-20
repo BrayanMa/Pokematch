@@ -1,5 +1,9 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.AppConfig;
 
+import fr.uge.jee.springmvc.pokematch.Pokemons.Pokemon;
+import fr.uge.jee.springmvc.pokematch.Pokemons.PokemonList;
+import fr.uge.jee.springmvc.pokematch.Pokemons.RankedPokemon;
+import fr.uge.jee.springmvc.pokematch.Pokemons.Result;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

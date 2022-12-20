@@ -1,6 +1,8 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.AppConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.uge.jee.springmvc.pokematch.Pokemons.Pokemon;
+import fr.uge.jee.springmvc.pokematch.Pokemons.PokemonForm;
 import graphql.kickstart.spring.webclient.boot.GraphQLRequest;
 import graphql.kickstart.spring.webclient.boot.GraphQLWebClient;
 import org.springframework.stereotype.Component;

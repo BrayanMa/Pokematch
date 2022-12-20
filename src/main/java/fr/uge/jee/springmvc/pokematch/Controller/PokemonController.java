@@ -1,5 +1,10 @@
-package fr.uge.jee.springmvc.pokematch;
+package fr.uge.jee.springmvc.pokematch.Controller;
 
+import fr.uge.jee.springmvc.pokematch.AppConfig.Cache;
+import fr.uge.jee.springmvc.pokematch.Pokemons.Pokemon;
+import fr.uge.jee.springmvc.pokematch.Pokemons.PokemonList;
+import fr.uge.jee.springmvc.pokematch.Pokemons.Result;
+import fr.uge.jee.springmvc.pokematch.User.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
